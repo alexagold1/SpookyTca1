@@ -1,21 +1,168 @@
 body {
   overflow: hidden;
-  height: 100vh;
-  width: 100vw;
+  height: 100vh; /* viewport height*/
+  width: 100vw; /** viewport width*/
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
-  background: #424f6f;
+  background: #dea3f0;
 }
+
 #container {
   width: 400px;
   height: 400px;
   padding: 0;
   box-sizing: border-box;
-  background: #424f6f;
+  background: #dea3f0;
 }
+
 *:after,
 *:before {
   box-sizing: inherit;
+}
+
+#spooky {
+  margin: 10% auto;
+  width: 80%;
+  height: 80%;
+  animation: floaty 3s infinite ease-in-out;
+}
+
+#spooky #body {
+  position: relative;
+  margin: 50px auto 0;
+  width: 180px;
+  height: 220px;
+  background: #d2f2ec;
+  border-top-left-radius: 90px;
+  border-top-right-radius: 90px;
+  animation: floaty 3s ease-in-out, colorChange 5s infinite;
+}
+
+#spooky #body:before,
+#spooky #body:after {
+  content: "";
+  position: absolute;
+  top: 130px;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #d2f2ec;
+  animation: floaty 0.1s infinite, colorChange 5s infinite;
+}
+/*arms*/
+#spooky #body:before {
+  left: -18px;
+}
+
+#spooky #body:after {
+  right: -18px;
+}
+/*arms*/
+
+#spooky #body #eyes {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 98px 0 0;
+  width: 90px;
+  height: 20px;
+}
+
+#spooky #body #eyes:before,
+#spooky #body #eyes:after {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: #252c49;
+  border-radius: 50%;
+}
+
+#spooky #body #mouth {
+  background: #252c49;
+  margin: 25px auto 0;
+  width: 60px;
+  height: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#spooky #body #mouth:before {
+  content: " ";
+  display: block;
+  background: #ffffff;
+  margin-left: 20px;
+  width: 10px;
+  height: 10px;
+}
+
+#spooky #body #feet {
+  position: absolute;
+  display: flex;
+  bottom: -18px;
+  width: -100px;
+  height: 36px;
+  animation: colorChange 5s infinite;
+}
+
+#spooky #body #feet > *,
+#spooky #body #feet::before,
+#spooky #body #feet::after {
+  content: " ";
+  width: 36px;
+  height: 36px;
+  background: #d2f2ec;
+  border-radius: 50%;
+  animation: colorChange 5s infinite;
+}
+
+#shadow {
+  margin: -98px auto 0;
+  background: #230a2d;
+  width: 180px;
+  height: 40px;
+  border-radius: 50%;
+  animation: zoomy 3s infinite;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-40px);
+  }
+}
+
+@keyframes zoomy {
+  0%,
+  100% {
+    transform: scale(1.4);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+}
+@keyframes colorChange {
+  0% {
+    background: #d2f2ec;
+  }
+  25% {
+    background: #f2d2d2;
+  }
+  50% {
+    background: #d2d2f2;
+  }
+  75% {
+    background: #d2f2d2;
+  }
+  100% {
+    background: #d2f2ec;
+  }
 }
